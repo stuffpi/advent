@@ -1,13 +1,21 @@
 /*
   Simple tool for visualizing day 9 of Advent of Code 2025.
 
-  main() read the input file, instantiates a GUI component to plot the data,
+  main() reads the input file, instantiates a GUI component to plot the data,
   and creates a window containing just the GUI component.
 
+  Since the data for part 9 spans a wide range (x and y both range from
+  approximately 0 to 100000), this scans the input points for maximum and
+  minimum values and sets a rescale factor and translation offset to
+  insure all input points are within the given window.
+
+  The goal of this code is to be simple enough to be modified for use
+  with other simple plots.
+
+  Consider this code public domain.
   
-  
-  Hopefully this code is straightforward enough to be modified
-  for use with other simple plots.
+  github.com/stuffpi
+  reddit.com/u/pi_stuff
 */
 
 import java.util.List;
@@ -135,6 +143,7 @@ public class day9_visual extends JPanel {
     g.scale(scale, scale);
     g.translate(-min.x, -min.y);
   }
+
   
   public void paintComponent(Graphics g1) {
     Graphics2D g = (Graphics2D) g1;
